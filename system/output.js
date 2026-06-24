@@ -118,7 +118,7 @@ function fnEvaluationCategories(resultsObj) {
 	$("#resultsShort").empty();
 	$("#resultsDetailed").empty();
 
-	$("#resultsHeading").empty().append("<h1>Auswertung zu: " + selectedFormatName + "</h1>").fadeIn(500);
+	$("#resultsHeading").empty().append("<h2>Auswertung zu: " + selectedFormatName + "</h2>").fadeIn(500);
 
 	var tableContent = "<div class='row' role='table'><div class='col'>";
 
@@ -147,7 +147,7 @@ function fnEvaluationCategories(resultsObj) {
 	tableContent += "</div></div>";
 	$("#resultsShort").append(tableContent);
 
-	var detailedContent = "<h2>Detaillierte Antwortübersicht (nachträgliche Änderung möglich)</h2>";
+	var detailedContent = "<h3>Detaillierte Antwortübersicht (nachträgliche Änderung möglich)</h3>";
 	detailedContent += "<div class='table-responsive mt-3'>";
 	detailedContent += "<table class='table table-bordered table-striped'>";
 	detailedContent += "<thead class='thead-dark'><tr><th style='width: 15%;'>Kriterium</th><th style='width: 45%;'>Frage</th><th style='width: 30%;'>Antwort</th><th style='width: 10%;'>Punkte</th></tr></thead>";

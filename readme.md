@@ -1,9 +1,10 @@
-# File-O-Mat
+# File-O-Mat / Evaluate File Formats
+
 Dieses Skript stellt eine Reihe von Fragen, die dabei helfen, Dateiformate auf ihre Eignung zur Langzeitverfügbarkeit zu evaluieren.
 
-Der Fragenkatalog und die Gewichtungen sind aus einem bash-Skript der [SLUB Dresden ](https://git.slub-dresden.de/digital-preservation/judge_fileformats)übernommen. 
+Der Fragenkatalog und die Gewichtungen sind aus einem bash-Skript von Andreas Romeyke/[SLUB Dresden](https://git.slub-dresden.de/digital-preservation/judge_fileformats) übernommen. 
 
-Die Web-Applikation basiert auf Mat-O-Wahl von Mathias Steudtner  ([Webseite](https://www.mat-o-wahl.de/) / [GitHub](https://github.com/msteudtn/Mat-O-Wahl))
+Die Web-Applikation basiert auf Mat-O-Wahl von Mathias Steudtner ([Webseite](https://www.mat-o-wahl.de/)/ [GitHub](https://github.com/msteudtn/Mat-O-Wahl)).
 
 Es werden weder Datenbank noch PHP benötigt. Sämtliche Eingaben gehen nach Verlassen der Seite verloren.
 
@@ -11,15 +12,16 @@ Es werden weder Datenbank noch PHP benötigt. Sämtliche Eingaben gehen nach Ver
 
 ```
 cd {Verzeichnis}
-python3 -m http.server 80
+python3 -m http.server 8002
 ```
 
-Dann im Browser [http://localhost/](http://localhost/) aufrufen.
+Dann im Browser [http://localhost:8002/](http://localhost:8002/) aufrufen.
 
 
 - - - 
 - - - 
-
+<br><br>
+aus dem Original-Readme:
 
 ## VORAUSSETZUNG
 
