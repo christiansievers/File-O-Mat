@@ -150,7 +150,7 @@ function fnEvaluationCategories(resultsObj) {
 	var detailedContent = "<h2>Detaillierte Antwortübersicht (nachträgliche Änderung möglich)</h2>";
 	detailedContent += "<div class='table-responsive mt-3'>";
 	detailedContent += "<table class='table table-bordered table-striped'>";
-	detailedContent += "<thead class='thead-dark'><tr><th style='width: 15%;'>Kriterium</th><th style='width: 45%;'>Frage</th><th style='width: 30%;'>Deine Antwort</th><th style='width: 10%;'>Punkte</th></tr></thead>";
+	detailedContent += "<thead class='thead-dark'><tr><th style='width: 15%;'>Kriterium</th><th style='width: 45%;'>Frage</th><th style='width: 30%;'>Antwort</th><th style='width: 10%;'>Punkte</th></tr></thead>";
 	detailedContent += "<tbody id='detailedTableBody'></tbody></table></div>";
 
 	$("#resultsDetailed").append(detailedContent);
