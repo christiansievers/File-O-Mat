@@ -5,61 +5,21 @@ Der Fragenkatalog und die Gewichtungen sind aus einem bash-Skript der [SLUB Dres
 
 Die Web-Applikation basiert auf Mat-O-Wahl von Mathias Steudtner  ([Webseite](https://www.mat-o-wahl.de/) / [GitHub](https://github.com/msteudtn/Mat-O-Wahl))
 
+Es werden weder Datenbank noch PHP benötigt. Sämtliche Eingaben gehen nach Verlassen der Seite verloren.
+
+## Lokales Starten der Applikation
+
+```
+cd {Verzeichnis}
+python3 -m http.server 80
+```
+
+Dann im Browser [http://localhost/](http://localhost/) aufrufen.
+
 
 - - - 
 - - - 
 
-
-*ENGLISH DESCRIPTION at the end of the German text*
-
-# Mat-O-Wahl - Ein einfach zu bedienender, freier Wahl-O-Mat Klon für jedermann
-
-## LIVE-DEMO
-
-https://www.mat-o-wahl.de/ -> Ausprobieren (DE) :beer:
-
-## BEDIENUNG / INSTALLATION
-
-### Installation ohne Docker
-1. ZIP-Archiv **herunterladen und entpacken**
-   (Github -> oben rechts -> Code -> Download ZIP)
-
-2. Datei `/DATA/DEFINITION.JS` in einem **Texteditor (am besten mit Syntaxhervorhebung) bearbeiten**.   
-
-3. `Fragen- und Antworten-CSV`-Datei in einem **Texteditor oder einer Tabellenkalkulation (MS Excel, LO Calc, ...) bearbeiten**. Der Dateiname kann frei gewählt werden.
-
-4. **Testen mit `INDEX.HTML`** oder `QUICKTEST.HTML` 
-   (am besten auf http://localhost/ oder im privaten Webspace) 
-
-**Optional:** Im Ordner `/EXTRAS` gibt es **Erweiterungen** um bei Bedarf zusätzliche Funktionen zu aktivieren. (z.B. Filtern von Ergebnissen, Vorabfrage, Einbinden per iframe)
-
-### Installation mit Docker
-#### Nutzung des fertigen Images
-
-1. installiere [docker](https://docs.docker.com/engine/install/) und docker-compose 
-
-2. lade die docker-compose.yml runter
-
-3. passe die Parameter für deine zwecke an
-   - **Image:** Wähle aus, ob du eine spezielle Version verwenden möchtest.
-   - **Port:** Ändere den Port, falls Port 80 bereits belegt ist.
-   - **Volumes:** Passe den Pfad deiner Konfigurationsdateien an (Standard: `./data`).
-
-4. starte den Service mit `docker-compose up` (du kannst den Service mit `docker-compose down` stoppen)
-
-#### Baue das image selber
-
-1. installiere [docker](https://docs.docker.com/engine/install/) und docker-compose
-
-2. ZIP-Archiv **herunterladen und entpacken**
-   (Github -> oben rechts -> Code -> Download ZIP)
-
-3. passe die Parameter für deine zwecke in der `docker-compose-dev.yml` an
-   - **Image:** Wähle aus, ob du eine spezielle Version verwenden möchtest.
-   - **Port:** Ändere den Port, falls Port 80 bereits belegt ist.
-   - **Volumes:** Passe den Pfad deiner Konfigurationsdateien an (Standard: `./data`).
-
-4. starte den Service mit `docker-compose -f docker-compose-dev.yml up` (du kannst den Service mit `docker-compose down` stoppen)
 
 ## VORAUSSETZUNG
 
@@ -80,97 +40,3 @@ GPL 3 (siehe Verzeichnis /SYSTEM oder http://choosealicense.com/licenses/gpl-v3/
 - Quellcode, Lizenz und größere Änderungen müssen kenntlich gemacht werden.
 - Änderungen, Weitergabe, sowie kommerzielle und private Nutzung erlaubt.
 - Keine Garantie für Softwareschäden. 
-
-## HILFE / KONTAKT / ÄNDERUNGEN
-
-- Weitere Informationen und Dokumentation online unter https://www.mat-o-wahl.de
-- oder per E-Mail (siehe unten).
-- Änderungen zu den Vorgängerversionen finden sich im Changelog https://github.com/msteudtn/Mat-O-Wahl/blob/master/system/changelog.md
-
-Wenn Sie den Mat-O-Wahl einsetzen, würde ich mich über eine **kurze Mitteilung von Ihnen** freuen.
-
-mathias . steudtner (a) mailbox . org
-
----
-
-# Mat-O-Wahl (*) - A simple to handle, free "Voting Advice Application" / "Electoral Compass" for everybody 
-
-## LIVE-DEMO
-
-https://www.mat-o-wahl.de/ -> Try It (EN) :hamburger:
-
-## USE / INSTALLATION
-
-### Installation without Docker
-1. **Download and unpack** ZIP archive
-    (Github -> top right -> Code -> Download ZIP)
-
-2. **Edit** `/DATA/DEFINITION.JS` with a text-editor (best use one with syntax-highlighting).
-
-3. **Edit** `CSV-text file` for questions and answers with a text-editor or spread-sheet-software (MS Excel. LO Calc, ...)
-
-4. **Test settings** using `INDEX.HTML` or `QUICKTEST.HTML`
-   (works best on http://localhost/ or your private webspace)
-
-**Optional:** You can find some **extensions** in the folder `/EXTRAS`. It adds some more functionality to the program, if needed. (e.g. filter of results, pre-question, include the program within an iframe)
-
-### Installation with Docker
-
-#### Using the Prebuilt Image
-
-1. Install [Docker](https://docs.docker.com/engine/install/) and Docker Compose.  
-
-2. Download the `docker-compose.yml` file.  
-
-3. Adjust the parameters to suit your needs:  
-   - **Image:** Choose whether you want to use a specific version.  
-   - **Port:** Change the port if port 80 is already in use.  
-   - **Volumes:** Adjust the path of your configuration files (default: `./data`).  
-
-4. Start the service with `docker-compose up` (you can stop the service with `docker-compose down`).  
-
-#### Build the Image Yourself  
-
-1. Install [Docker](https://docs.docker.com/engine/install/) and Docker Compose.  
-
-2. **Download and extract the ZIP archive**  
-   (GitHub -> Top right -> Code -> Download ZIP).  
-
-3. Adjust the parameters in `docker-compose-dev.yml` to suit your needs:  
-   - **Image:** Choose whether you want to use a specific version.  
-   - **Port:** Change the port if port 80 is already in use.  
-   - **Volumes:** Adjust the path of your configuration files (default: `./data`).  
-
-4. Start the service with:  `docker-compose -f docker-compose-dev.yml up` (You can stop the service with `docker-compose down`).
-
-## PREREQUISITES
-
-- some **web-space** (a cheap shared-hosting plan is sufficient)
-- **no** PHP or MySQL / MariaDB needed (optional for statistics)
-- **no** npm or any other packaging manager needed
-- knowing, how to **open a text-file** and/or a spread-sheet-software 
-
-## Mat-o-Wahl and GDPR
-
-- All **evaluations** happen **inside the user's browsers**
-- **No data** is collected **on a server** (optional for statistics - Exception: default access-logging by your webhosting-provider, i.e. IP-address and time)
-- No external files (e.g. Content Delivery Network / CDN, Bootstrap, jQuery, no Social Media-plugin) - all included 
-
-## LICENSE
-
-GPL 3 (see folder /SYSTEM or http://choosealicense.com/licenses/gpl-v3/)
-- Required: Disclose Source, License and copyright notice, State Changes 
-- Permitted: Commercial Use, Distribution, Modification, Patent Use, Private Use 
-- Forbidden: Hold Liable
-
-## HELP / CONTACT / CHANGELOG
-
-- You can find further information and documentation on-line at https://www.mat-o-wahl.de
-- or via email (see below)
-- Changes to earlier versions in the changelog https://github.com/msteudtn/Mat-O-Wahl/blob/master/system/changelog.md
-
-If you should find Mat-O-Wahl useful, I would be happy about a **short notice from you** by email.
-
-mathias . steudtner (a) mailbox . org
-
-(*) derived from the German project "Wahl-O-Mat" (Wahl-Automat) / "Vote-Machine"
