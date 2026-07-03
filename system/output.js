@@ -68,7 +68,7 @@ function fnShowQuestionNumber(questionNumber) {
 		$("#sectionShowQuestions").fadeOut(300).hide();		
         
 		// 1. KRITERIUM-HEADER & KRITERIUMS-ERKLÄRUNG BEREITSTELLEN
-        $("#showQuestionsHeader").empty().append("<h2>Kriterium: " + arCategories[questionNumber] + "</h2>");
+        $("#showQuestionsHeader").empty().append("<h2>" + arCategories[questionNumber] + "</h2>");
 		if (arCategoryExplanations[questionNumber] && arCategoryExplanations[questionNumber] !== "") {
 			// Ersetzt eventuelle Zeilenumbrüche aus der CSV (\n) in echte HTML-Breaks (<br>)
 			let formattedCatExpl = arCategoryExplanations[questionNumber].replace(/\n/g, "<br>");
@@ -132,7 +132,7 @@ function fnEvaluationCategories(resultsObj) {
         tableContent += "<div class='row'>";
         
         tableContent += "<div class='col col-12 col-md-4' role='cell'>";
-        tableContent += "<strong>Kriterium: " + cat + "</strong>";
+        tableContent += "<strong>" + cat + "</strong>";
         tableContent += "</div>";
 
         tableContent += "<div class='col col-12 col-md-8' role='cell'>";
