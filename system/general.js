@@ -31,31 +31,6 @@ function fnReadCsv(csvFile, fnCallback) {
  });	
 }
 
-function fnTransformCsvToArray(csvData) {
-	// Erwartetes Format: Gruppierung;Frage;Antwort_1;Gewichtung_1;Antwort_2;Gewichtung_2;...
-	var arZeilen = $.csv.toArrays(csvData, {separator: ";"});
-	
-	for(let i = 1; i <= arZeilen.length - 1; i++) { // Ab i=1, um Kopfzeile zu überspringen
-		if (arZeilen[i].length < 2) continue; // Leere Zeilen ignorieren
-        
-		arCategories.push(arZeilen[i][0]);
-		arQuestionsLong.push(arZeilen[i][1]);
-		
-		let answersForQuestion = [];
-		// Gehe durch die Spaltenpaare für Antworten und Gewichtungen
-		for(let j = 2; j < arZeilen[i].length; j+=2) {
-			if(arZeilen[i][j] && arZeilen[i][j].trim() !== "") {
-				answersForQuestion.push({
-					text: arZeilen[i][j],
-					weight: parseInt(arZeilen[i][j+1]) || 0
-				});
-			}
-		}
-		arAnswers.push(answersForQuestion);
-	}
-    totalQuestions = arQuestionsLong.length;
-}
-
 function fnEvaluation() {
 	$("#sectionDescription").empty().hide();
 	$("#sectionShowQuestions").empty().hide();

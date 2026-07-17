@@ -38,6 +38,10 @@ function fnTransformCsvToArray(csvData) {
 	totalQuestions = arAnswers.length;
 }
 
+
+
+
+
 function fnStart() {
 	$("#sectionShowQuestions").hide();
 	$("#sectionVotingButtons").hide();
@@ -45,7 +49,31 @@ function fnStart() {
 	
 	fnReadCsv("data/fragen_judge_fileformat.csv", function(csvData) {
         fnTransformCsvToArray(csvData);
-        $("#descriptionExplanation").empty().append("");
+        
+        // 1. Eindeutige Kriterien filtern
+        var uniqueCategories = [];
+        for (var i = 0; i < arCategories.length; i++) {
+            if (uniqueCategories.indexOf(arCategories[i]) === -1 && arCategories[i].trim() !== "") {
+                uniqueCategories.push(arCategories[i]);
+            }
+        }
+        
+        // 2. Erklärungstext aufbauen
+        var htmlContent = "<p>Dieses Skript stellt eine Reihe von Fragen, die dabei helfen, Dateiformate auf ihre Eignung zur Langzeitverfügbarkeit zu evaluieren.</p><p>Es gibt insgesamt " + totalQuestions + " Fragen. Die Fragen sind nach folgenden Kriterien gruppiert:</p>";
+        htmlContent += "<ul class='text-left'>";
+        for (var j = 0; j < uniqueCategories.length; j++) {
+            htmlContent += "<li>" + uniqueCategories[j] + "</li>";
+        }
+        htmlContent += "</ul>";
+        htmlContent += "<p class='mt-3'>Die Antworten sind durch Punkte gewichtet. Ein höheres Risiko wird ausgedrückt durch eine niedrigere Punktzahl.</p>";
+        
+        // 3. Text einfügen
+        $("#descriptionExplanation").empty().append(htmlContent);
+
+        // 4. Radikaler CSS-Fix: Erzwingt die Aufhebung aller Höhenbegrenzungen bei allen Boxen
+        $("<style>")
+            .html("#descriptionExplanation, #sectionDescription, main, .theme-showcase, .row, .col { overflow: visible !important; height: auto !important; max-height: none !important; }")
+            .appendTo("head");
     });
 }
 
@@ -147,7 +175,7 @@ function fnEvaluationCategories(resultsObj) {
 	tableContent += "</div></div>";
 	$("#resultsShort").append(tableContent);
 
-	var detailedContent = "<h3>Detaillierte Antwortübersicht (nachträgliche Änderung möglich)</h3>";
+	var detailedContent = "<h3>Detaillierte Antwortübersicht</h3>";
 	detailedContent += "<div class='table-responsive mt-3'>";
 	detailedContent += "<table class='table table-bordered table-striped'>";
 	detailedContent += "<thead class='thead-dark'><tr><th style='width: 15%;'>Kriterium</th><th style='width: 45%;'>Frage</th><th style='width: 30%;'>Antwort</th><th style='width: 10%;'>Punkte</th></tr></thead>";
