@@ -103,6 +103,15 @@ function fnShowQuestionNumber(questionNumber) {
 			$("#showQuestionsHeader").append("<p class='text-muted small font-weight-normal mb-0 mt-1'>" + formattedCatExpl + "</p>");
 		}
 
+		// --- FRAGEN-ZÄHLER DIREKT ÜBER DER FRAGE EINFÜGEN ---
+		$("#showQuestionsCounter").remove(); // Alten Zähler löschen, falls vorhanden
+		$("#showQuestionsQuestion").before(
+			"<p id='showQuestionsCounter' class='text-muted small'>" + 
+			"Frage " + (questionNumber + 1) + " von " + totalQuestions + 
+			"</p>"
+		);
+		// --------------------------------------------------------
+
 		// 2. FRAGE & FRAGE-ERKLÄRUNG BEREITSTELLEN
         $("#showQuestionsQuestion").empty().append(arQuestionsLong[questionNumber]);			
 		if (arExplanations[questionNumber] && arExplanations[questionNumber] !== "") {
