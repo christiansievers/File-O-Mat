@@ -1,4 +1,5 @@
 Kriterium_deu;Erklärung_Kriterium_deu;Frage (deu);Erklärung_deu;Antwort_1;Gewichtung_1;Antwort_2;Gewichtung_2;Antwort_3;Gewichtung_3;Antwort_4;Gewichtung_4;Antwort_5;Gewichtung_5
+(Das Kriterium);(Erklärung des Kriteriums);(Die Frage);(Bei Bedarf kann hier die einzelne Frage genauer erläutert werden);Antwort 1;0;Antwort 2;0;Sonstige;0;;;;
 Offenlegungsgrad;"Ist das Dateiformat offen dokumentiert?
 
 Je weniger dies der Fall ist, desto höher das Risiko, dass ein Dateiformat nicht mehr migrierbar ist, weil keine Konvertierungsprogramme entwickelt werden können.";Ist das Dateiformat offen spezifiziert, d.h. das Recht die Spezifikation zu lesen, anzuwenden und basierend darauf Werkzeuge zu entwickeln, ist nicht eingeschränkt?;"Die offene Standardisierung von Dateiformaten erlaubt es im Fall der Formatobsoleszenz, Lese- und Konvertierungsprogramme neu zu erstellen.

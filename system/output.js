@@ -65,7 +65,7 @@ function fnStart() {
             htmlContent += "<li>" + uniqueCategories[j] + "</li>";
         }
         htmlContent += "</ul>";
-        htmlContent += "<p class='mt-3'>Die Antworten sind durch Punkte gewichtet. Ein höheres Risiko wird ausgedrückt durch eine niedrigere Punktzahl.</p>";
+        htmlContent += "<p class='mt-3'>Die meisten Fragen lassen sich mit 'Ja' oder 'Nein' beantworten. Die Antwort 'Sonstige' kann gewählt werden, wenn 'Ja' oder 'Nein' nicht zutreffen, die Antwort nicht bekannt ist, oder die Frage übersprungen werden soll.</p><p>Alle Antworten sind durch Punkte gewichtet. Ein höheres Risiko wird durch eine niedrigere Punktzahl ausgedrückt. Die vergebenen Punkte werden am Ende als Teil der Auswertung aufgeführt. Dort gibt es auch die Möglichkeit, Fragen anders zu beantworten.</p>";
         
         // 3. Text einfügen
         $("#descriptionExplanation").empty().append(htmlContent);
