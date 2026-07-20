@@ -40,9 +40,8 @@ function fnTransformCsvToArray(csvData) {
 
 
 
-
-
 function fnStart() {
+	$("#sectionExplanationPage").hide(); // Neue Erklärungsseite standardmäßig verstecken
 	$("#sectionShowQuestions").hide();
 	$("#sectionVotingButtons").hide();
 	$("#sectionResults").hide();
@@ -59,32 +58,39 @@ function fnStart() {
         }
         
         // 2. Erklärungstext aufbauen
-        var htmlContent = "<p>Dieses Skript stellt eine Reihe von Fragen, die dabei helfen, Dateiformate auf ihre Eignung zur Langzeitverfügbarkeit zu evaluieren.</p><p>Es gibt insgesamt " + totalQuestions + " Fragen. Die Fragen sind nach folgenden Kriterien gruppiert:</p>";
+        var htmlContent = "<p>Es gibt insgesamt " + totalQuestions + " Fragen. Die Fragen sind nach folgenden Kriterien gruppiert:</p>";
         htmlContent += "<ul class='text-left'>";
         for (var j = 0; j < uniqueCategories.length; j++) {
             htmlContent += "<li>" + uniqueCategories[j] + "</li>";
         }
         htmlContent += "</ul>";
-        htmlContent += "<p class='mt-3'>Die meisten Fragen lassen sich mit 'Ja' oder 'Nein' beantworten. Die Antwort 'Sonstige' kann gewählt werden, wenn 'Ja' oder 'Nein' nicht zutreffen, die Antwort nicht bekannt ist, oder die Frage übersprungen werden soll.</p><p>Alle Antworten sind durch Punkte gewichtet. Ein höheres Risiko wird durch eine niedrigere Punktzahl ausgedrückt, und umgekehrt bedeutet eine höhere Punktzahl ein geringeres Risiko.</p><p>Die Auswertung führt alle vergebenen Punkte auf und bietet die Möglichkeit, die Antworten noch einmal anzupassen.</p>";
+        htmlContent += "<p class='mt-3'>Die meisten Fragen lassen sich mit 'Ja' oder 'Nein' beantworten. Die Antwort 'Sonstige' kann gewählt werden, wenn 'Ja' oder 'Nein' nicht zutreffen, die Antwort nicht bekannt ist, oder die Frage übersprungen werden soll.<sup>Je nach Frage wird der dritte Knopf für <i>trifft nicht zu</i>, <i>weiß ich nicht</i>, <i>es ist kompliziert</i> oder <i>überspringen</i> benutzt. Die Bedeutung des Knopfes sollte besser verständlich gemacht werden, um Fehleingaben zu vermeiden. Man könnte den Knopf fallabhängig direkt in Frage anders benennen. Oder vielleicht findet sich eine bessere <i>catch-all</i> Bezeichnung als <i>Sonstiges</i>?</sup></p><p>Alle Antworten sind durch Punkte gewichtet. Ein höheres Risiko wird durch eine niedrigere Punktzahl ausgedrückt, und umgekehrt bedeutet eine höhere Punktzahl ein geringeres Risiko.</p><p>Die Auswertung führt alle vergebenen Punkte auf und bietet die Möglichkeit, die Antworten noch einmal anzupassen.</p>";
         
         // 3. Text einfügen
         $("#descriptionExplanation").empty().append(htmlContent);
 
         // 4. Radikaler CSS-Fix: Erzwingt die Aufhebung aller Höhenbegrenzungen bei allen Boxen
         $("<style>")
-            .html("#descriptionExplanation, #sectionDescription, main, .theme-showcase, .row, .col { overflow: visible !important; height: auto !important; max-height: none !important; }")
+            .html("#descriptionExplanation, #sectionDescription, #sectionExplanationPage, main, .theme-showcase, .row, .col { overflow: visible !important; height: auto !important; max-height: none !important; }")
             .appendTo("head");
     });
 }
 
+// Wenn auf Startseite auf "Start" geklickt wird
 function fnHideWelcomeMessage() { 
 	selectedFormatName = $("#formatNote").val().trim();
 	if (selectedFormatName === "") {
 		selectedFormatName = "unbenanntes Format";
 	}
 	
-	$('#sectionDescription').hide().empty();
-	fnShowQuestionNumber(-1);	
+	$('#sectionDescription').hide().empty(); // Versteckt Startseite
+	$('#sectionExplanationPage').fadeIn(300); // Zeigt die neue Erklärungsseite
+}
+
+// Wenn auf der Erklärungsseite auf "Fragen starten" geklickt wird
+function fnStartQuestions() {
+	$('#sectionExplanationPage').hide().empty(); // Versteckt Erklärungsseite
+	fnShowQuestionNumber(-1); // Startet die eigentlichen Fragen
 }
 
 function fnShowQuestionNumber(questionNumber) {

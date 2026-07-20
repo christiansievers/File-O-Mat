@@ -25,21 +25,21 @@
 
 <div class="container container-fluid theme-showcase">
 	<main>
+		<!-- SCHRITT 1: STARTSEITE (Reine Namenseingabe) -->
 		<section id="sectionDescription">
 			<div class="row border border-dark rounded p-4 mb-3">
 				<div class="col align-self-center">
 					<div id="descriptionHeading1"><h1>File-O-Mat</h1></div>
 					<div id="descriptionHeading2"><h2>Start</h2>
-					
+					<p>Dieses Skript stellt eine Reihe von Fragen, die dabei helfen, Dateiformate auf ihre Eignung zur Langzeitverfügbarkeit zu evaluieren.</p>
 					</div>
-					<div id="descriptionExplanation" class="lead"><p>Lade...</p></div>
 					
 					<div class="form-group mt-4">
 						<label for="formatNote"><strong>Zu evaluierendes Dateiformat (z.B. PDF, TIFF, XML):</strong></label>
 						<input type="text" class="form-control form-control-lg" id="formatNote" placeholder="Formatname oder Notiz hier eingeben...">
 					</div>
 					<div class="form-group mt-4">
-						<p>Klicken Sie auf Start, um mit der Format-Evaluierung zu beginnen.</p>
+						<p>Klicken Sie auf Start, um fortzufahren.</p>
 					</div>
 				</div>
 			</div>
@@ -50,6 +50,24 @@
 			</div>
 		</section>
 
+		<!-- SCHRITT 2: ERKLÄRUNGSEITE (Neu und eigenständig) -->
+		<section id="sectionExplanationPage" style="display:none;">
+			<div class="row border border-dark rounded p-4 mb-3">
+				<div class="col align-self-center">
+					<div id="explanationHeading1"><h1>File-O-Mat</h1></div>
+					<div id="explanationHeading2"><h2>Hinweise zur Evaluierung</h2></div>
+					
+					<div id="descriptionExplanation" class="lead"></div>
+				</div>
+			</div>
+			<div class="row">							
+				<div class="col">				
+				    <button type="button" class="btn btn-primary btn-lg float-right" onclick="fnStartQuestions()" id="explanationButtonNext">Fragen starten</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- SCHRITT 3: FRAGEN -->
 		<section id="sectionShowQuestions">
 			<div class="row" tabindex="0" style="margin-top: 1.0em;">
 				<div class="col">
