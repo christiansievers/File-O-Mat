@@ -159,17 +159,26 @@ function fnShowQuestionNumber(questionNumber) {
 
 function fnEvaluationCategories(resultsObj) {
 	$("#resultsShort").empty();
+	$("#resultsTotal").empty(); // Neu: Gesamt-Container leeren
 	$("#resultsDetailed").empty();
 
 	$("#resultsHeading").empty().append("<h2>Auswertung zu: " + selectedFormatName + "</h2>").fadeIn(500);
 
 	var tableContent = "<div class='row' role='table'><div class='col'>";
+	
+	// Variablen für die Gesamtsummen vorbereiten
+	var totalMax = 0;
+	var totalAchieved = 0;
 
     for (const cat in resultsObj.max) {
         let maxPoints = resultsObj.max[cat];
         let achievedPoints = resultsObj.scores[cat];
         let percent = fnPercentage(achievedPoints, maxPoints);
         let barClass = fnBarImage(percent);
+
+		// Gesamtsummen aufaddieren
+		totalMax += maxPoints;
+		totalAchieved += achievedPoints;
 
         tableContent += "<div class='border rounded mow-row-striped p-3 mb-2' role='row'>";
         tableContent += "<div class='row'>";
@@ -179,20 +188,16 @@ function fnEvaluationCategories(resultsObj) {
         tableContent += "</div>";
 
         tableContent += "<div class='col col-12 col-md-8' role='cell'>";
-        // 'position: relative' hinzugefügt, um absolute Textplatzierung bei 0% zu ermöglichen
         tableContent += "<div class='progress' style='height: 30px; position: relative;'>";
         
         var textToShow = percent + "% (" + achievedPoints + " / " + maxPoints + " Punkte)";
         
         if (percent === 0) {
-            // FIX FÜR 0%: Fortschrittsbalken bleibt leer (0%), Text wird dunkel zentriert darübergelegt
             tableContent += "<div class='progress-bar " + barClass + "' role='progressbar' style='width: 0%;' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100'></div>";
             tableContent += "<div class='text-dark w-100 position-absolute text-center font-weight-bold' style='line-height: 30px; pointer-events: none;'>" + textToShow + "</div>";
         } else {
-            // Normales Verhalten für Werte über 0%
-            tableContent += "<div class='progress-bar " + barClass + "' role='progressbar' style='width:"+percent+"%;' aria-valuenow='"+percent+"' aria-valuemin='0' aria-valuemax='100'>";
-            tableContent += textToShow;
-            tableContent += "</div>";
+            tableContent += "<div class='progress-bar " + barClass + "' role='progressbar' style='width:"+percent+"%;' aria-valuenow='"+percent+"' aria-valuemin='0' aria-valuemax='100'></div>";
+            tableContent += "<div class='text-dark w-100 position-absolute text-center font-weight-bold' style='line-height: 30px; pointer-events: none;'>" + textToShow + "</div>";
         }
         
         tableContent += "</div></div>";
@@ -201,6 +206,36 @@ function fnEvaluationCategories(resultsObj) {
 
 	tableContent += "</div></div>";
 	$("#resultsShort").append(tableContent);
+
+	// ==========================================
+	// NEU: HIER WIRD DER GESAMTBALKEN GENERIERT
+	// ==========================================
+	var totalPercent = fnPercentage(totalAchieved, totalMax);
+	var totalBarClass = fnBarImage(totalPercent) + " progress-bar-striped progress-bar-animated";
+	var totalTextToShow = totalPercent + "% (" + totalAchieved + " / " + totalMax + " Punkte)";
+
+	// Hervorgehobenes Container-Layout mit blauem Rahmen, Schatten und größerer Schrift
+	var totalContent = "<div class='border border-primary rounded p-4 shadow-sm bg-light' role='row' style='border-width: 2px !important;'>";
+	totalContent += "<div class='row align-items-center'>";
+	
+	totalContent += "<div class='col col-12 col-md-4' role='cell'>";
+	totalContent += "<p class='mb-0 font-weight-bold'>Gesamtpunktzahl</p>";
+	totalContent += "</div>";
+
+	totalContent += "<div class='col col-12 col-md-8' role='cell'>";
+	// Höherer Balken (40px statt 30px)
+	totalContent += "<div class='progress' style='height: 40px; position: relative;'>";
+	
+	// Fortschrittsbalken rendern
+	totalContent += "<div class='progress-bar " + totalBarClass + "' role='progressbar' style='width:" + totalPercent + "%;' aria-valuenow='" + totalPercent + "' aria-valuemin='0' aria-valuemax='100'></div>";
+	// Text zentriert und vergrößert (1.1rem) darüberlegen
+	totalContent += "<div class='text-dark w-100 position-absolute text-center font-weight-bold' style='line-height: 40px; font-size: 1.1rem; pointer-events: none; z-index: 5;'>" + totalTextToShow + "</div>";
+	
+	totalContent += "</div></div>";
+	totalContent += "</div></div>";
+
+	$("#resultsTotal").append(totalContent).show();
+	// ==========================================
 
 	var detailedContent = "<h3>Detaillierte Antwortübersicht</h3>";
 	detailedContent += "<div class='table-responsive mt-3'>";

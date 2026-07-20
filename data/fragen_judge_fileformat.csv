@@ -1,34 +1,5 @@
 Kriterium_deu;Erklärung_Kriterium_deu;Frage (deu);Erklärung_deu;Antwort_1;Gewichtung_1;Antwort_2;Gewichtung_2;Antwort_3;Gewichtung_3;Antwort_4;Gewichtung_4;Antwort_5;Gewichtung_5
 (Das Kriterium);(Erklärung des Kriteriums);(Die Frage);(Bei Bedarf kann hier die einzelne Frage genauer erläutert werden);Antwort 1;0;Antwort 2;0;Sonstige;0;;;;
-Offenlegungsgrad;"Ist das Dateiformat offen dokumentiert?
-
-Je weniger dies der Fall ist, desto höher das Risiko, dass ein Dateiformat nicht mehr migrierbar ist, weil keine Konvertierungsprogramme entwickelt werden können.";Ist das Dateiformat offen spezifiziert, d.h. das Recht die Spezifikation zu lesen, anzuwenden und basierend darauf Werkzeuge zu entwickeln, ist nicht eingeschränkt?;"Die offene Standardisierung von Dateiformaten erlaubt es im Fall der Formatobsoleszenz, Lese- und Konvertierungsprogramme neu zu erstellen.
-
-Sinnvoll ist es, wenn Dateiformate vollständig spezifiziert sind und nicht auf andere Dokumente angewiesen sind. Dies erhöht die Chance, Lese- und Konvertierungsprogramme nur anhand der vorhandenen Spezifikation zu erstellen.
-
-Für Dateiformate in der digitalen Langzeitarchivierung sollten geeignete Validatoren oder zumindest Referenzimplementierungen zur Verfügung stehen, die eine Beurteilung ermöglichen, inwieweit Dateien von Programmen interpretiert werden können.
-
-Proprietäre Datenformate halten diesen Anforderungen nicht stand.";Ja;2;Nein;0;Sonstige;0;;;;
-Adoptionsgrad;"Ist das Dateiformat weit verbreitet? 
-
-Je weniger dies der Fall ist, desto höher das Risiko, dass ein Dateiformat nicht mehr migrierbar ist, weil niemand das Dateiformat kennt und es nicht einmal mehr anzeigbar ist.";Wird das Dateiformat durch Behörden und öffentliche Einrichtungen häufig verwendet?;Weitverbreitete Dateiformate bringen es mit sich, dass das Formatwissen über diese stärker verbreitet und für die Nachwelt eher dokumentiert ist. Hinzu kommt, dass die Verfügbarkeit von geeigneter Software mit hoher Wahrscheinlichkeit länger gegeben ist.;Ja;1;Nein;0;Sonstige;0;;;;
-Transparenzgrad;"Ist es einfach, das Dateiformat zu analysieren?
-
-Je weniger dies der Fall ist, desto höher ist das Risiko, Dateien nur mit unverhältnismäßig hohem Aufwand analysieren zu können.";Ist das Dateiformat menschenlesbar und mittels Texteditor anzeig- und bearbeitbar?;Handelt es sich um eine textbasiertes oder ein Binärformat?;Ja;1;Nein;0;Sonstige;0;;;;
-Grad der Selbstdokumentation;"Ist das Dateifomat selbstdokumentiert?
-
-Je weniger dies der Fall ist, desto höher ist das Risiko, dass man ohne externe Metadaten eine Datei nicht zuordnen und analysieren kann.
-
-";Sind die Formatmetadaten robust genug für ein akkurate Dateianalyse?;(Kontext und Beispiele geben);Ja;2;Nein;0;Sonstige;1;;;;
-Grad der Abhängigkeit von externer Hard- und Software;"Ist das Dateiformat abhängig von spezifischer Soft- und Hardware?
-
-Die Fragen helfen, zu ermitteln, ob es sich um ein proprietäres Format handelt. Diese sind mit einem erhöhten Risiko behaftet, dass ein Erhalt der Nutzbarkeit durch Emulation und Formatmigration wegen fehlender Abspielumgebung nicht mehr durchführbar ist.";Benötigt das Dateiformat eine ganz spezielle Hardwareumgebung (z. B. Grafikkarten, Soundkarten, Speicheranforderungen, Blu-Ray-Player, Spielekonsole), um damit zu interagieren, es nutzen und migrieren zu können?;;Ja;0;Nein;3;Sonstige;1;;;;
-Grad der Lizenz- und Patentabhängigkeit;"Ist das Dateiformat abhängig von Rechten Dritter?
-
-Je mehr dies der Fall ist, desto höher ist das Risiko, dass ein Dateiformat nicht mehr migrierbar ist, weil keine Konvertierungsprogramme entwickelt werden dürfen.";Ist das Format Gegenstand von Lizenz- oder Patentansprüchen, die die Entwicklung von Open-Source-Tools zum Öffnen und Verwalten der Dateien behindern könnten?;Lizenzbehaftete, proprietäre Spezifikationen erschweren den Erhalt, da eine Sicherung der Spezifikationsdokumente notwendig ist und Lizenzgeber über die Zeit nicht mehr verfügbar sein können.;Ja;0;Nein;3;Sonstige;1;;;;
-Grad der technischen Schutzmaßnahmen;"Ermöglicht das Dateiformat technische Schutzmaßnahmen?
-
-Je mehr dies der Fall ist, desto höher ist das Risiko, dass ein Dateiformat nicht mehr migrierbar ist, weil keine Konvertierungsprogramme entwickelt werden können.";Verfügt das Format über die Möglichkeit, die gesamte oder einen Teil der resultierenden Datei zu verschlüsseln?;Dateiformate sollten keine Zugriffsschutzmechanismen enthalten, da der Zugriff auf den Inhalt über die Zeit verloren gehen kann (oder gar nicht möglich ist).;Ja;0;Nein;2;Sonstige;0;;;;
 Grad der Alterung;"Wie veraltet oder wie instabil (unerprobt,dynamisch entwickelt?) ist das Dateiformat?
 
 Die Fragen dienen als Indiz für mögliche Formatobsoleszenz als auch für die Stabilität von Dateiformaten. 
