@@ -64,7 +64,7 @@ function fnStart() {
             htmlContent += "<li>" + uniqueCategories[j] + "</li>";
         }
         htmlContent += "</ul>";
-        htmlContent += "<p class='mt-3'>Die meisten Fragen lassen sich mit 'Ja' oder 'Nein' beantworten. Die Antwort 'Sonstige' kann gewählt werden, wenn 'Ja' oder 'Nein' nicht zutreffen, die Antwort nicht bekannt ist, oder die Frage übersprungen werden soll.<sup>Je nach Frage wird der dritte Knopf für <i>trifft nicht zu</i>, <i>weiß ich nicht</i>, <i>es ist kompliziert</i> oder <i>überspringen</i> benutzt. Die Bedeutung des Knopfes sollte besser verständlich gemacht werden, um Fehleingaben zu vermeiden. Man könnte den Knopf fallabhängig direkt in Frage anders benennen. Oder vielleicht findet sich eine bessere <i>catch-all</i> Bezeichnung als <i>Sonstiges</i>?</sup></p><p>Alle Antworten sind durch Punkte gewichtet. Ein höheres Risiko wird durch eine niedrigere Punktzahl ausgedrückt, und umgekehrt bedeutet eine höhere Punktzahl ein geringeres Risiko.</p><p>Die Auswertung führt alle vergebenen Punkte auf und bietet die Möglichkeit, die Antworten noch einmal anzupassen.</p>";
+        htmlContent += "<p class='mt-3'>Die meisten Fragen lassen sich mit 'Ja' oder 'Nein' beantworten. Die Antwort 'Sonstige' kann gewählt werden, wenn 'Ja' oder 'Nein' nicht zutreffen, die Antwort nicht bekannt ist, oder die Frage übersprungen werden soll.<sup>Je nach Frage wird der dritte Knopf für <i>trifft nicht zu</i>, <i>weiß ich nicht</i>, <i>es ist kompliziert</i> oder <i>überspringen</i> benutzt. Die Bedeutung des Knopfes sollte besser verständlich gemacht werden, um Fehleingaben zu vermeiden. Man könnte den Knopf fallabhängig direkt in der Frage (in der .csv) anders benennen. Oder vielleicht findet sich eine bessere <i>catch-all</i> Bezeichnung als <i>Sonstiges</i>?</sup></p><p>Alle Antworten sind durch Punkte gewichtet. Ein höheres Risiko wird durch eine niedrigere Punktzahl ausgedrückt, und umgekehrt bedeutet eine höhere Punktzahl ein geringeres Risiko.</p><p>Die Auswertung führt alle vergebenen Punkte auf und bietet die Möglichkeit, die Antworten noch einmal anzupassen.</p>";
         
         // 3. Text einfügen
         $("#descriptionExplanation").empty().append(htmlContent);
@@ -179,11 +179,23 @@ function fnEvaluationCategories(resultsObj) {
         tableContent += "</div>";
 
         tableContent += "<div class='col col-12 col-md-8' role='cell'>";
-        tableContent += "<div class='progress' style='height: 30px;'>";
-        tableContent += "<div class='progress-bar " + barClass + "' role='progressbar' style='width:"+percent+"%;' aria-valuenow='"+percent+"' aria-valuemin='0' aria-valuemax='100'>";
-        tableContent += percent + "% (" + achievedPoints + " / " + maxPoints + " Punkte)";
-        tableContent += "</div></div></div>";
-
+        // 'position: relative' hinzugefügt, um absolute Textplatzierung bei 0% zu ermöglichen
+        tableContent += "<div class='progress' style='height: 30px; position: relative;'>";
+        
+        var textToShow = percent + "% (" + achievedPoints + " / " + maxPoints + " Punkte)";
+        
+        if (percent === 0) {
+            // FIX FÜR 0%: Fortschrittsbalken bleibt leer (0%), Text wird dunkel zentriert darübergelegt
+            tableContent += "<div class='progress-bar " + barClass + "' role='progressbar' style='width: 0%;' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100'></div>";
+            tableContent += "<div class='text-dark w-100 position-absolute text-center font-weight-bold' style='line-height: 30px; pointer-events: none;'>" + textToShow + "</div>";
+        } else {
+            // Normales Verhalten für Werte über 0%
+            tableContent += "<div class='progress-bar " + barClass + "' role='progressbar' style='width:"+percent+"%;' aria-valuenow='"+percent+"' aria-valuemin='0' aria-valuemax='100'>";
+            tableContent += textToShow;
+            tableContent += "</div>";
+        }
+        
+        tableContent += "</div></div>";
         tableContent += "</div></div>";
     }
 
