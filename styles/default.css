@@ -28,12 +28,20 @@ a:not(.btn):hover { color:#FF0000; text-decoration:none; }
 /* Willkommensnachricht (erster DIV)
    Welcome Message (first DIV) */
 #sectionDescription > div:first-of-type {
-    padding: 5% 2%;
+    padding: 20px 5px;
     text-overflow: clip;
     overflow: auto;
     margin-top: 1.0em;
     max-height: 60vh;
 }
+
+#sectionExplanationPage {
+    padding: 0px 0px;
+    text-overflow: clip;
+    overflow: auto;
+    margin-top: 1.0em;
+}
+
 
 /* BOOTSTRAP */
 .row {
@@ -45,25 +53,6 @@ a:not(.btn):hover { color:#FF0000; text-decoration:none; }
 .mow-row-striped:nth-child(odd) {
 	background-color: rgba(0, 0, 0, 0.05);
 }
-
-
-/* Social Media DIV und zugehoerige Buttons */
-/* Social media DIV and corresponding buttons */
-.social-facebook {
-    background: #4560a3;
-	color: #c0c0c0;
-}
-
-.social-twitter {
-   background: #68ace3;
-	color: #fff;
-}
-
-.social-mail {
-	background: #c6c6c6;
-	color: #fff;
-}
-
 
 /*	FadeIn + FadeOut */
 
@@ -77,5 +66,6 @@ a:not(.btn):hover { color:#FF0000; text-decoration:none; }
 	to { opacity: 0; }
 }
 
+/*	Using sup for notes to self */
 sup {background: #fff;
 	color: #ddd;}

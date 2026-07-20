@@ -214,8 +214,8 @@ function fnEvaluationCategories(resultsObj) {
 	var totalBarClass = fnBarImage(totalPercent) + " progress-bar-striped progress-bar-animated";
 	var totalTextToShow = totalPercent + "% (" + totalAchieved + " / " + totalMax + " Punkte)";
 
-	// Hervorgehobenes Container-Layout mit blauem Rahmen, Schatten und größerer Schrift
-	var totalContent = "<div class='border border-primary rounded p-4 shadow-sm bg-light' role='row' style='border-width: 2px !important;'>";
+	// Hervorgehobenes Container-Layout mit blauem Rahmen und Schatten
+	var totalContent = "<div class='border border-primary rounded p-4 shadow-sm' role='row'>";
 	totalContent += "<div class='row align-items-center'>";
 	
 	totalContent += "<div class='col col-12 col-md-4' role='cell'>";

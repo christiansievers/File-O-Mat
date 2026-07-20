@@ -1,6 +1,6 @@
 Kriterium_deu;Erklärung_Kriterium_deu;Frage (deu);Erklärung_deu;Antwort_1;Gewichtung_1;Antwort_2;Gewichtung_2;Antwort_3;Gewichtung_3;Antwort_4;Gewichtung_4;Antwort_5;Gewichtung_5
-(Das Kriterium);(Erklärung des Kriteriums);(Die Frage);(Bei Bedarf kann hier die einzelne Frage genauer erläutert werden);Antwort 1;0;Antwort 2;0;Sonstige;0;;;;
-Grad der Alterung;"Wie veraltet oder wie instabil (unerprobt,dynamisch entwickelt?) ist das Dateiformat?
+(Hier steht das Kriterium);(Erklärung des Kriteriums);(Hier steht die Frage);(Bei Bedarf kann hier die einzelne Frage genauer erläutert werden);Antwort 1;0;Antwort 2;0;Sonstige;0;;;;
+Grad der Alterung;"Wie veraltet oder wie instabil/unerprobt ist das Dateiformat?
 
 Die Fragen dienen als Indiz für mögliche Formatobsoleszenz als auch für die Stabilität von Dateiformaten. 
 
