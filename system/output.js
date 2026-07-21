@@ -101,28 +101,26 @@ function fnShowQuestionNumber(questionNumber) {
 		
 		$("#sectionShowQuestions").fadeOut(300).hide();		
         
-		// 1. KRITERIUM-HEADER & KRITERIUMS-ERKLÄRUNG BEREITSTELLEN
+	// 1. KRITERIUM-HEADER & KRITERIUMS-ERKLÄRUNG
         $("#showQuestionsHeader").empty().append("<h2>" + arCategories[questionNumber] + "</h2>");
 		if (arCategoryExplanations[questionNumber] && arCategoryExplanations[questionNumber] !== "") {
-			// Ersetzt eventuelle Zeilenumbrüche aus der CSV (\n) in echte HTML-Breaks (<br>)
-			let formattedCatExpl = arCategoryExplanations[questionNumber].replace(/\n/g, "<br>");
+			let formattedCatExpl = fnFormatText(arCategoryExplanations[questionNumber]);
 			$("#showQuestionsHeader").append("<p class='text-muted small font-weight-normal mb-0 mt-1'>" + formattedCatExpl + "</p>");
 		}
 
-		// --- FRAGEN-ZÄHLER DIREKT ÜBER DER FRAGE EINFÜGEN ---
-		$("#showQuestionsCounter").remove(); // Alten Zähler löschen, falls vorhanden
+		// --- FRAGEN-ZÄHLER ---
+		$("#showQuestionsCounter").remove();
 		$("#showQuestionsQuestion").before(
 			"<p id='showQuestionsCounter' class='text-muted small'>" + 
 			"Frage " + (questionNumber + 1) + " von " + totalQuestions + 
 			"</p>"
 		);
-		// --------------------------------------------------------
 
-		// 2. FRAGE & FRAGE-ERKLÄRUNG BEREITSTELLEN
-        $("#showQuestionsQuestion").empty().append(arQuestionsLong[questionNumber]);			
+		// 2. FRAGE & FRAGE-ERKLÄRUNG (.html() nutzen!)
+        $("#showQuestionsQuestion").empty().html(fnFormatText(arQuestionsLong[questionNumber]));			
 		if (arExplanations[questionNumber] && arExplanations[questionNumber] !== "") {
-			let formattedExpl = arExplanations[questionNumber].replace(/\n/g, "<br>");
-			$("#showQuestionsExplanation").empty().append(formattedExpl).show();
+			let formattedExpl = fnFormatText(arExplanations[questionNumber]);
+			$("#showQuestionsExplanation").empty().html(formattedExpl).show();
 		} else {
 			$("#showQuestionsExplanation").empty().hide();
 		}
@@ -253,7 +251,7 @@ function fnEvaluationCategories(resultsObj) {
 
 		let row = $("<tr></tr>");
 		row.append($("<td></td>").text(cat));
-		row.append($("<td></td>").text(question));
+		row.append($("<td></td>").html(fnFormatText(question)));
 
 		let tdAnswer = $("<td></td>");
 		let selectEl = $("<select class='form-control form-control-sm'></select>");
@@ -285,4 +283,34 @@ function fnEvaluationCategories(resultsObj) {
 
 	$("#resultsDetailed").show();
 	$("#sectionResults").show();
+}
+
+// Hilfsfunktion: Ersetzt Platzhalter, wandelt Markdown-Links um und formatiert Zeilenumbrüche
+function fnFormatText(text) {
+    if (!text) return "";
+
+    var rawFormatName = selectedFormatName || "Dateiformat";
+
+    // 1. Markdown-Links [Label](URL) umwandeln
+    // ([^)]+) erfasst ALLES zwischen den Klammern (auch Leerzeichen und Sonderzeichen)
+    var formatted = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(match, label, url) {
+        url = url.trim();
+        
+        // Platzhalter {selectedFormatName} URL-konform enkodieren (z.B. "PDF/A" -> "PDF%2FA")
+        var encodedFormat = encodeURIComponent(rawFormatName);
+        var cleanUrl = url.replace(/\{selectedFormatName\}/g, encodedFormat);
+        
+        // Unkodierte Leerzeichen in der URL sicherheitshalber in %20 umwandeln
+        cleanUrl = cleanUrl.replace(/ /g, "%20");
+        
+        return '<a href="' + cleanUrl + '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
+    });
+
+    // 2. Platzhalter auch im normalen Text (außerhalb von Links) ersetzen
+    formatted = formatted.replace(/\{selectedFormatName\}/g, rawFormatName);
+
+    // 3. Zeilenumbrüche (\n) in HTML <br> umwandeln
+    formatted = formatted.replace(/\n/g, "<br>");
+
+    return formatted;
 }

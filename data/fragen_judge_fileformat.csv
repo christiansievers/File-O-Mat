@@ -1,10 +1,21 @@
 Kriterium_deu;Erklärung_Kriterium_deu;Frage (deu);Erklärung_deu;Antwort_1;Gewichtung_1;Antwort_2;Gewichtung_2;Antwort_3;Gewichtung_3;Antwort_4;Gewichtung_4;Antwort_5;Gewichtung_5
-(Hier steht das Kriterium);(Erklärung des Kriteriums);(Hier steht die Frage);(Bei Bedarf kann hier die einzelne Frage genauer erläutert werden);Antwort 1;0;Antwort 2;0;Sonstige;0;;;;
+(Hier steht das Kriterium);(Es gibt meistens mehrere Fragen pro Kriterium. Hier steht die Erklärung des Kriteriums. Diese ist dann für alle Fragen zu diesem Kriterium gleich.);(Hier steht die Frage);(Hier steht die Erklärung zu genau dieser Frage. Bei Bedarf kann sie hier genauer erläutert werden. Zusätzlich können Hilfestellungen gegeben werden, wie man Antworten findet, z.B. eine Google-Suche, spezifisch auf das eingegebene Format vorformuliert. Oder ein Link zur Suche in PRONOM, mit einem Hinweis, in welchem Feld sich die gesuchte Information findet.);Antwort 1;0;Antwort 2;0;Sonstige;0;;;;
+Offenlegungsgrad;"Ist das Dateiformat offen dokumentiert?
+
+Je weniger dies der Fall ist, desto höher das Risiko, dass ein Dateiformat nicht mehr migrierbar ist, weil keine Konvertierungsprogramme entwickelt werden können.";Ist das Dateiformat offen spezifiziert, d.h. das Recht die Spezifikation zu lesen, anzuwenden und basierend darauf Werkzeuge zu entwickeln, ist nicht eingeschränkt?;"Die offene Standardisierung von Dateiformaten erlaubt es im Fall der Formatobsoleszenz, Lese- und Konvertierungsprogramme neu zu erstellen.
+
+Sinnvoll ist es, wenn Dateiformate vollständig spezifiziert sind und nicht auf andere Dokumente angewiesen sind. Dies erhöht die Chance, Lese- und Konvertierungsprogramme nur anhand der vorhandenen Spezifikation zu erstellen.
+
+Für Dateiformate in der digitalen Langzeitarchivierung sollten geeignete Validatoren oder zumindest Referenzimplementierungen zur Verfügung stehen, die eine Beurteilung ermöglichen, inwieweit Dateien von Programmen interpretiert werden können.
+
+Proprietäre Datenformate halten diesen Anforderungen nicht stand.
+
+[Google-Suche: Ist das Dateiformat {selectedFormatName} offen dokumentiert?](https://www.google.com/search?q=Ist das Dateiformat {selectedFormatName} offen dokumentiert?)";Ja;2;Nein;0;Sonstige;0;;;;
 Grad der Alterung;"Wie veraltet oder wie instabil/unerprobt ist das Dateiformat?
 
 Die Fragen dienen als Indiz für mögliche Formatobsoleszenz als auch für die Stabilität von Dateiformaten. 
 
-Sie helfen, das Risiko zu bewerten, dass eine Datei nicht gelesen werden kann, weil die Dateiformatspezifikation veraltet oder zu frisch ist. Das geringste Risiko besteht hier für Dateiformate, deren Spezifikation vor längerer Zeit erstmals veröffentlicht wurde und die seitdem aktualisiert wurde.";Wann wurde die Formatspezifikation erstmals erstellt?;;vor mehr als 30 Jahren ;0;vor 20 Jahren;1;vor 10 Jahren;2;in den letzten 10 Jahren;1;;
+Sie helfen, das Risiko zu bewerten, dass eine Datei nicht gelesen werden kann, weil die Dateiformatspezifikation veraltet oder zu frisch ist. Das geringste Risiko besteht hier für Dateiformate, deren Spezifikation vor längerer Zeit erstmals veröffentlicht wurde und die seitdem aktualisiert wurde.";Wann wurde die Formatspezifikation erstmals erstellt?;[Google-Suche: Wann wurde die Formatspezifikation für {selectedFormatName} erstmals erstellt?](https://www.google.com/search?q=Wann wurde die Formatspezifikation für {selectedFormatName} erstmals erstellt?);vor mehr als 30 Jahren ;0;vor 20 Jahren;1;vor 10 Jahren;2;in den letzten 10 Jahren;1;;
 Komplexitätsgrad;"Wie einfach ist das Dateiformat?
 
 Die Fragen helfen, zu ermitteln, wie umfangreich Formatwissen aufgebaut werden muss und wieviel Aufwand für die Fehleranalyse und Entwicklung von Migrationslösungen aufgebracht werden muss. 
